@@ -1,0 +1,128 @@
+import javax.swing.JOptionPane;
+
+public class Cola {
+	public Nodo inicio;
+	public Nodo fin;
+	public int tamanio;
+
+    public Cola() {
+    	inicio=null;
+    	fin=null;
+    	tamanio=0;
+    }
+
+    public void push(int valor){
+    	Nodo nuevo = new Nodo(valor);
+    	if (esVacia()){
+    		inicio = nuevo;
+    	} else {
+    		fin.sig=nuevo;
+    	}
+    	fin=nuevo;
+    	tamanio++;
+    }
+
+    public int pop (){
+    	if(esVacia()){
+    		return -1;
+    	} else {
+    		Nodo aux=inicio;
+    		inicio=aux.sig;
+    		tamanio--;
+    		if(esVacia()){
+    			fin=null;
+    		}
+    		return aux.dato;
+    	}
+    }
+
+    public int peek (){
+    	if(esVacia()){
+    		return -1;
+    	} else {
+    		return inicio.dato;
+    	}
+    }
+
+    public boolean esVacia(){
+    	return tamanio==0;
+    }
+
+    public int tamanio(){
+    	return tamanio;
+    }
+
+    public void recorrer(){
+    	if (!esVacia()){
+    		Nodo aux= inicio;
+	    	while (aux != null){
+	    		System.out.print(aux.dato+", ");
+	    		aux = aux.sig;
+	    	}
+	    	System.out.println("");
+    	} else {
+    		System.out.println("La cola está vacía");
+    	}
+    }
+
+    public static void main (String args[]){
+    	Cola cola= new Cola();
+    	System.out.println("Primera: ");
+    	cola.recorrer();
+
+    	cola.push(1);
+    	cola.push(2);
+    	cola.push(3);
+    	cola.push(4);
+    	cola.push(5);
+    	cola.push(6);
+    	cola.recorrer();
+    	cola.pop();
+    	System.out.println("Después de eliminar: ");
+    	cola.recorrer();
+    	cola.pop();
+    	System.out.println("Después de eliminar: ");
+    	cola.recorrer();
+    	cola.push(8);
+    	cola.pop();
+    	System.out.println("Después de eliminar: ");
+    	cola.recorrer();
+    	cola.pop();
+    	cola.pop();
+    	cola.pop();
+    	cola.pop();
+    	System.out.println("Primer elemento: "+String.valueOf(cola.peek()));
+    	cola.recorrer();
+    	cola.push(8);
+    	cola.push(9);
+    	cola.recorrer();
+    	cola.pop();
+    	cola.pop();
+    	cola.pop();
+    	cola.pop();
+    	cola.pop();
+    	cola.pop();
+    	cola.pop();
+    	cola.recorrer();
+
+    	cola.push(1);
+    	cola.push(2);
+    	cola.push(3);
+    	cola.push(4);
+    	cola.push(5);
+    	cola.push(6);
+    	cola.recorrer();
+    	cola.pop();
+    	cola.pop();
+    	cola.pop();
+    	cola.pop();
+    	cola.pop();
+    	cola.pop();
+    	cola.pop();
+    	cola.recorrer();
+    }
+
+
+
+
+}
